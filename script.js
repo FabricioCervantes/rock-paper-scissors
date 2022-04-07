@@ -2,7 +2,7 @@
 let user_score = 0;
 let computer_score = 0;
 
-game();
+
 
 function computerPlay() {
     const values = ["rock", "paper", "scissors"];
@@ -50,7 +50,10 @@ function game() {
     }
     if (user_score > computer_score) {
         alert("The user wins!")
-    } else {
+    }
+    if (computer_score > user_score) {
         alert("The computer wins!")
+    } else {
+        alert("Thats a tie!")
     }
 }
