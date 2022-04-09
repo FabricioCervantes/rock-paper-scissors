@@ -1,8 +1,18 @@
-//Function to choose randomly one of the three choices using an array
 let user_score = 0;
 let computer_score = 0;
 
-
+const button = document.querySelector("#rock")
+const button2 = document.querySelector("#scissors")
+const button3 = document.querySelector("#paper")
+const userScore = document.querySelector(".userScore")
+const computerScore = document.querySelector(".computerScore")
+const winner = document.querySelector(".winner")
+const test = document.querySelector(".frase")
+const restore = document.createElement("button")
+button.addEventListener('click', rock)
+button2.addEventListener('click', scissors)
+button3.addEventListener('click', paper)
+restore.addEventListener("click", repeat)
 
 function computerPlay() {
     const values = ["rock", "paper", "scissors"];
@@ -10,50 +20,92 @@ function computerPlay() {
     return finalValue;
 }
 
+function repeat() {
+    user_score = 0;
+    computer_score = 0;
+    userScore.textContent = user_score;
+    computerScore.textContent = computer_score;
+    restore.remove();
+    winner.textContent = "";
+}
+
+function rock() {
+    playerSelection = "rock"
+    round(playerSelection, computerPlay())
+    game();
+}
+
+function scissors() {
+    playerSelection = "scissors"
+    round(playerSelection, computerPlay())
+    game();
+}
+
+function paper() {
+    playerSelection = "paper"
+    round(playerSelection, computerPlay())
+    game();
+}
+
+function frase(phrase) {
+    test.textContent = ""
+    test.textContent = phrase
+    test.style.color = "white"
+    test.style.fontSize = "32px"
+}
+
 function round(playerSelection, computerSelection) {
-    let result;
     if (playerSelection.toLocaleLowerCase() === computerSelection) {
-        result = "This is a tie!"
+        frase("This is a tie!")
     }
     if (playerSelection.toLocaleLowerCase() == "rock" && computerSelection == "scissors") {
-        result = "Rock beats scissors, you win!"
+        frase("Rock beats scissors, you win!")
         user_score++;
+        userScore.textContent = user_score;
     }
     if (playerSelection.toLocaleLowerCase() == "scissors" && computerSelection == "rock") {
-        result = "Rock beats scissors, you lose!"
+        frase("Rock beats scissors, you lose!")
         computer_score++;
+        computerScore.textContent = computer_score;
     }
     if (playerSelection.toLocaleLowerCase() == "paper" && computerSelection == "rock") {
-        result = "Paper beats rock, you win!"
+        frase("Paper beats rock, you win!")
         user_score++;
+        userScore.textContent = user_score;
     }
     if (playerSelection.toLocaleLowerCase() == "rock" && computerSelection == "paper") {
-        result = "Paper beats rock, you lose!"
+        frase("Paper beats rock, you lose!")
         computer_score++;
+        computerScore.textContent = computer_score;
     }
     if (playerSelection.toLocaleLowerCase() == "scissors" && computerSelection == "paper") {
-        result = "Scissors beat paper, you win!"
+        frase("Scissors beat paper, you win!")
         user_score++;
+        userScore.textContent = user_score;
     }
     if (playerSelection.toLocaleLowerCase() == "paper" && computerSelection == "scissors") {
-        result = "Scissors beat paper, you lose!"
+        frase("Scissors beat paper, you lose!")
         computer_score++;
+        computerScore.textContent = computer_score;
     }
-    return result;
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        playerSelection = window.prompt("¿Qué eliges?");
-        console.log(round(playerSelection, computerPlay()));
-        i;
+    if (user_score === 5) {
+        frase("")
+        winner.textContent = "The user wins!"
+        restore.classList.add("restore")
+        restore.style.backgroundColor = "white"
+        restore.textContent = "REPEAT"
+        winner.append(restore)
     }
-    if (user_score > computer_score) {
-        alert("The user wins!")
-    }
-    if (computer_score > user_score) {
-        alert("The computer wins!")
-    } else {
-        alert("Thats a tie!")
+
+    if (computer_score === 5) {
+        frase("")
+        winner.textContent = "The computer wins!"
+        restore.classList.add("restore")
+        restore.style.backgroundColor = "white"
+        restore.textContent = "REPEAT"
+        winner.append(restore)
     }
 }
