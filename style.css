@@ -1,34 +1,45 @@
-html,
 body {
-    height: 100%;
-}
-
-body {
-
     color: white;
-    background-image: url("https://st2.depositphotos.com/5647624/50508/i/600/depositphotos_505083934-stock-photo-golden-isolated-sparkles-or-glitter.jpg")
+    font-weight: bold;
+    text-align: center;
+    background-color: black;
+    font-family: 'Rubik Wet Paint', cursive;
 }
 
-.container {
+h1 {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    font-size: 70px;
+}
+
+.buttons {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 100%;
+    gap: 0 50px;
 }
 
-button {
-    font-family: "Open Sans", sans-serif;
-    font-size: 16px;
-    letter-spacing: 2px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #000;
+.square {
+    height: 110px;
+    width: 110px;
+    border: 6px solid white;
+    padding: 20px;
+    transition: transform 0.5s;
+}
+
+#rock,
+#scissors,
+#paper {
+    background-color: transparent;
+    border: 0;
     cursor: pointer;
-    border: 3px solid;
-    padding: 0.25em 0.5em;
-    position: relative;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+    transition: transform 0.5s;
+
+}
+
+#rock:hover,
+#scissors:hover,
+#paper:hover,
+.square:hover {
+    transform: scale(1.1);
+    cursor: pointer;
 }
