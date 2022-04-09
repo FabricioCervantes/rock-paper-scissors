@@ -8,26 +8,13 @@ const userScore = document.querySelector(".userScore")
 const computerScore = document.querySelector(".computerScore")
 const winner = document.querySelector(".winner")
 const test = document.querySelector(".frase")
+
 const restore = document.createElement("button")
+
 button.addEventListener('click', rock)
 button2.addEventListener('click', scissors)
 button3.addEventListener('click', paper)
 restore.addEventListener("click", repeat)
-
-function computerPlay() {
-    const values = ["rock", "paper", "scissors"];
-    let finalValue = (values[Math.floor(Math.random() * values.length)])
-    return finalValue;
-}
-
-function repeat() {
-    user_score = 0;
-    computer_score = 0;
-    userScore.textContent = user_score;
-    computerScore.textContent = computer_score;
-    restore.remove();
-    winner.textContent = "";
-}
 
 function rock() {
     playerSelection = "rock"
@@ -47,11 +34,10 @@ function paper() {
     game();
 }
 
-function frase(phrase) {
-    test.textContent = ""
-    test.textContent = phrase
-    test.style.color = "white"
-    test.style.fontSize = "32px"
+function computerPlay() {
+    const values = ["rock", "paper", "scissors"];
+    let finalValue = (values[Math.floor(Math.random() * values.length)])
+    return finalValue;
 }
 
 function round(playerSelection, computerSelection) {
@@ -90,6 +76,13 @@ function round(playerSelection, computerSelection) {
     }
 }
 
+function frase(phrase) {
+    test.textContent = ""
+    test.textContent = phrase
+    test.style.color = "white"
+    test.style.fontSize = "32px"
+}
+
 function game() {
     if (user_score === 5) {
         frase("")
@@ -108,4 +101,13 @@ function game() {
         restore.textContent = "REPEAT"
         winner.append(restore)
     }
+}
+
+function repeat() {
+    user_score = 0;
+    computer_score = 0;
+    userScore.textContent = user_score;
+    computerScore.textContent = computer_score;
+    restore.remove();
+    winner.textContent = "";
 }
